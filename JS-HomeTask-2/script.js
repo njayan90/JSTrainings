@@ -25,6 +25,7 @@ function header_section() {
 
 function body_section() {
     center.innerHTML = '';
+    create_all_tiles();
     create_dropdown(name);
     create_email();
 }
@@ -210,6 +211,12 @@ function create_single_tile(value) {
     }
     else {
         create_tile(value);
+    }
+}
+
+function create_all_tiles() {
+    for (let i = 1; i <= 10; i++) {
+        create_tile(arr[i]);
     }
 }
 

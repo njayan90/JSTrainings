@@ -1,0 +1,115 @@
+body {
+	padding: 0px;
+	margin: 0px;
+}
+
+.top {
+	color: white;
+	font-size: 35px;
+	background-color: darkblue;
+	padding-bottom: 40px;
+	padding-top: 40px;
+}
+
+.section {
+	padding: 10px;
+	margin-top: 15px;
+}
+
+.align {
+	margin-left: 30px;
+}
+
+.span1 {
+	margin-top: 100px;
+	font-size: 15px;
+	font-style: italic;
+	margin-left: 20px;
+}
+
+.border {
+	border-bottom: 1px solid lightgrey;
+	margin-top: 25px;
+	margin-left: 10px;
+}
+
+img {
+	margin-right: 8px;
+	padding: 10px;
+	padding-top: 2px;
+	height: 180px;
+	width: 170px;
+}
+
+.fin-section {
+	margin-bottom: 9%;
+	margin-left: 2px;
+	padding: 10px;
+}
+
+.one {
+	color: darkblue;
+	font-size: 25px;
+	margin-top: -5px;
+	margin-bottom: -10px;
+}
+
+hr {
+	opacity: 0.2;
+	margin-left: 20px;
+}
+
+.opac {
+	font-size: 15px;
+	opacity: 0.5;
+	margin-top: -5px;
+}
+
+.center {
+	float: left;
+	width: 80%;
+}
+
+.side {
+	width: 20%;
+	float: right;
+}
+
+.drop {
+	width: 245px;
+	height: 35px;
+	border: solid 1.2px;
+}
+
+.email {
+	border: solid 1.2px;
+	padding: 0px;
+	height: 35px;
+}
+
+.button {
+	background-color: orangered;
+	color: white;
+	border: 0px;
+	height: 35px;
+	width: 15%;
+}
+
+.subscribe {
+	background-color: black;
+	margin-right: 8px;
+	height: 38px;
+	color: white;
+	border: 0px;
+	margin-left: -5px;
+	width: 100px;
+}
+
+footer {
+	background: darkblue;
+	bottom: 0px;
+	width: 100%;
+	text-align: center;
+	color: white;
+	position: fixed;
+}

@@ -1,9 +1,5 @@
-let news;
-const arr = ["abc-news-au", "bbc-news", "cnn", "usa-today", "espn-cric-info"];
-
 class News {
     constructor() {
-
         this.load();
     }
 
@@ -32,49 +28,53 @@ class News {
                 return response.json();
             })
             .then((myJson) => {
-                this.create(myJson, name);
+                if (name == "abc-news-au" && flag == 0) {
+                    this.create(myJson, name);
+                }
+                else {
+                    this.create_all_tiles(myJson);
+                }
             });
     }
 
     create(myJson, name) {
-        let myMain = document.getElementById("myMain");
-        myMain.innerHTML = '';
+        center.innerHTML = '';
+        this.create_all_tiles(myJson);
+        this.create_dropdown(name);
+        this.create_email();
+    }
+
+    create_all_tiles(myJson) {
+        center.innerHTML = '';
         for (let i = 0; i < 10; i++) {
-            var main = this.create_element("div", "main", "main");
-            let center = this.create_element("div", "center", "center");
             let section = this.create_element("div", "section", "section");
             let section1 = this.create_element("div", "section1", "section1");
             let section2 = this.create_element("div", "section2", "section2");
-            this.create_img(section1, section, center, main, myMain, myJson.articles[i].urlToImage);
-            this.create_title(section2, section, center, main, myMain, myJson.articles[i].title);
+            this.create_img(section1, section, myJson.articles[i].urlToImage);
+            this.create_title(section2, section, myJson.articles[i].title);
             let p = this.create_element("p", "", "");
-            this.spanopac(myJson.articles[i].publishedAt, main, center, section, section2, p);
+            this.spanopac(myJson.articles[i].publishedAt, section, section2, p);
             p = this.create_element("p", "", "");
-            this.create_content(section2, section, center, main, myMain, p, myJson.articles[i].description);
-            this.create_button(section2, section, center, main, myMain, myJson.articles[i].title, myJson.articles[i].description);
-            this.create_border(section, center, main, myMain);
+            this.create_content(section2, section, p, myJson.articles[i].description);
+            this.create_button(section2, section, myJson.articles[i].title, myJson.articles[i].description);
+            this.create_border(section);
         }
-        this.create_dropdown(main, myMain, name);
-        this.create_email(main, myMain);
     }
 
-    create_title(section2, section, center, main, myMain, description) {
+    create_title(section2, section, description) {
         let h1 = this.create_element("h1", "one", "one");
         let h1_t = this.create_text(description);
         h1.appendChild(h1_t);
         section2.appendChild(h1);
         section.appendChild(section2);
-        center.appendChild(section);
-        main.appendChild(center);
-        myMain.appendChild(main);
-        document.body.appendChild(myMain);
+        this.append_child_center(section);
     }
 
     create_element(element, class_name, id_name) {
-        let main = document.createElement(element);
-        main.setAttribute("class", class_name);
-        main.setAttribute("id", id_name);
-        return (main);
+        let main1 = document.createElement(element);
+        main1.setAttribute("class", class_name);
+        main1.setAttribute("id", id_name);
+        return (main1);
     }
 
     create_text(element_text) {
@@ -92,78 +92,62 @@ class News {
         document.body.appendChild(foot);
     }
 
-    create_img(section1, section, center, main, myMain, img_url) {
+    create_img(section1, section, img_url) {
         let img = this.create_element("img", "img", "img");
         img.setAttribute("src", img_url);
         section1.appendChild(img);
         section.appendChild(section1);
-        center.appendChild(section);
-        main.appendChild(center);
-        myMain.appendChild(main);
-        document.body.appendChild(myMain);
+        this.append_child_center(section);
     }
 
-    spanopac(content, main, center, section, section2, p) {
+    spanopac(content, section, section2, p) {
         let span1 = this.create_element("span", "opac", "");
         let span1_t = this.create_text(content);
         span1.appendChild(span1_t);
         p.appendChild(span1);
         section2.appendChild(p);
         section.appendChild(section2);
-        center.appendChild(section);
-        main.appendChild(center);
-        myMain.appendChild(main);
-        document.body.appendChild(myMain);
+        this.append_child_center(section);
     }
 
-    create_content(section2, section, center, main, myMain, p, description) {
+    create_content(section2, section, p, description) {
         let p_t = this.create_text(description);
         p.setAttribute("id", "text");
         p.appendChild(p_t);
         section2.appendChild(p);
         section.appendChild(section2);
-        center.appendChild(section);
-        main.appendChild(center);
-        myMain.appendChild(main);
-        document.body.appendChild(myMain);
+        this.append_child_center(section);
     }
 
-    create_button(section2, section, center, main, myMain, title, description) {
+    create_button(section2, section, title, description) {
         let button = this.create_element("button", "button", title);
         let button_t = this.create_text("Continue Reading");
         button.appendChild(button_t);
         section2.appendChild(button);
         section.appendChild(section2);
-        center.appendChild(section);
-        main.appendChild(center);
-        myMain.appendChild(main);
-        document.body.appendChild(myMain);
+        this.append_child_center(section);
         button.addEventListener("click", () => {
             this.modal_window(title, description);
         })
     }
 
-    create_border(section, center, main, myMain) {
+    create_border(section) {
         let border = this.create_element("div", "border", "border");
         section.appendChild(border);
-        center.appendChild(section);
-        main.appendChild(center);
-        myMain.appendChild(main);
-        document.body.appendChild(myMain);
+        this.append_child_center(section);
     }
 
-    create_dropdown(main, myMain, name) {
+    create_dropdown(name) {
         let selectedOption = 0;
         let side = this.create_element("div", "side", "side");
         let h4 = this.create_element("h4", "", "");
-        var h4_t = this.create_text("SELECT CATEGORY");
+        let h4_t = this.create_text("SELECT CATEGORY");
         h4.appendChild(h4_t);
-        main.appendChild(h4);
-        myMain.appendChild(main);
-        document.body.appendChild(myMain);
+        this.append_child_side(h4);
         let drop = this.create_element("select", "drop", "select");
         let option;
         drop.addEventListener("change", (e) => {
+            flag = 1;
             this.body_section(e.target.value);
         })
         for (let i = 0; i < 5; i++) {
@@ -173,38 +157,30 @@ class News {
             let option_t = this.create_text(arr[i]);
             option.appendChild(option_t);
             drop.appendChild(option);
-            main.appendChild(drop);
-            myMain.appendChild(main);
-            document.body.appendChild(myMain);
+            this.append_child_side(drop);
             if (arr[i] == name) {
                 this.selectedOption = i;
             }
-            document.getElementById("select").selectedIndex = this.selectedOption;
         }
+        document.getElementById("select").selectedIndex = this.selectedOption;
     }
 
-    create_email(main, myMain) {
+    create_email() {
         let h4 = this.create_element("h4", "", "");
-        var h4_t = this.create_text("SUBSCRIBE");
+        let h4_t = this.create_text("SUBSCRIBE");
         h4.appendChild(h4_t);
-        main.appendChild(h4);
-        myMain.appendChild(main);
-        document.body.appendChild(myMain);
+        this.append_child_side(h4);
         let input = this.create_element("input", "email", "email");;
         input.setAttribute("type", "text");
         input.setAttribute("placeholder", "  Email Address");
-        main.appendChild(input);
-        myMain.appendChild(main);
-        document.body.appendChild(myMain);
+        this.append_child_side(input);
         input = this.create_element("input", "subscribe", "subscribe");
         input.setAttribute("type", "submit");
         input.setAttribute("value", "Subscribe");
         input.addEventListener("click", () => {
             this.validate_Email(document.getElementById("email").value);
         })
-        main.appendChild(input);
-        myMain.appendChild(main);
-        document.body.appendChild(myMain);
+        this.append_child_side(input);
     }
 
     modal_window(title, description) {
@@ -243,12 +219,33 @@ class News {
             alert("Successfully Subscribed");
             localStorage.setItem(r, email);
             return true;
-
         }
         else {
             alert("You have entered an invalid email address!");
             return false;
         }
     }
+
+    append_child_center(value) {
+        center.appendChild(value);
+        main.appendChild(center);
+        myMain.appendChild(main);
+        document.body.appendChild(myMain);
+    }
+
+    append_child_side(value) {
+        side.appendChild(value);
+        main.appendChild(side);
+        myMain.appendChild(main);
+        document.body.appendChild(myMain);
+    }
 }
+
+let news;
 news = new News();
+const arr = ["abc-news-au", "bbc-news", "cnn", "usa-today", "espn-cric-info"];
+var flag = 0;
+let myMain = document.getElementById("myMain");
+let main = news.create_element("div", "main", "main");
+let center = news.create_element("div", "center", "center");
+let side = news.create_element("div", "side", "side");

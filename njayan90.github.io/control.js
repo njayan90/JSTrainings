@@ -1,4 +1,4 @@
-class Control {
+export class Control {
     constructor() {
     }
 
@@ -22,8 +22,6 @@ class Control {
         }
     }
 }
-
-
 
 
 

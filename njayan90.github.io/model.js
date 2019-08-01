@@ -1,5 +1,6 @@
 let name = "abc-news-au";
-class Model {
+import {flag} from './view.js'
+export class Model {
     constructor() {
     }
     body_section(name, view) {

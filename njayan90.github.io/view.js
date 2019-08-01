@@ -3,11 +3,11 @@ class View {
     }
 
     header_section() {
-        let x = document.getElementById("myHeader");
-        let p = this.create_element("b", "News", "News");
-        let t = this.create_text("NEWSFEED");
-        let i = this.create_element("i", "yet", "yet");
-        let i_text = this.create_text("Yet Another NewsFeed");
+        const x = document.getElementById("myHeader");
+        const p = this.create_element("b", "News", "News");
+        const t = this.create_text("NEWSFEED");
+        const i = this.create_element("i", "yet", "yet");
+        const i_text = this.create_text("Yet Another NewsFeed");
         i.appendChild(i_text);
         p.appendChild(t);
         p.appendChild(i);
@@ -45,7 +45,7 @@ class View {
         h1.appendChild(h1_t);
         section2.appendChild(h1);
         section.appendChild(section2);
-        control.append_child_center(section);
+        this.append_child_center(section);
     }
 
     create_element(element, class_name, id_name) {
@@ -56,8 +56,8 @@ class View {
     }
 
     create_text(element_text) {
-        let text = document.createTextNode(element_text);
-        return (text);
+        return document.createTextNode(element_text);
+
     }
 
     footer_section() {
@@ -75,7 +75,7 @@ class View {
         img.setAttribute("src", img_url);
         section1.appendChild(img);
         section.appendChild(section1);
-        control.append_child_center(section);
+        this.append_child_center(section);
     }
 
     spanopac(content, section, section2, p) {
@@ -85,7 +85,7 @@ class View {
         p.appendChild(span1);
         section2.appendChild(p);
         section.appendChild(section2);
-        control.append_child_center(section);
+        this.append_child_center(section);
     }
 
     create_content(section2, section, p, description) {
@@ -94,7 +94,7 @@ class View {
         p.appendChild(p_t);
         section2.appendChild(p);
         section.appendChild(section2);
-        control.append_child_center(section);
+        this.append_child_center(section);
     }
 
     create_button(section2, section, title, description) {
@@ -103,16 +103,16 @@ class View {
         button.appendChild(button_t);
         section2.appendChild(button);
         section.appendChild(section2);
-        control.append_child_center(section);
+        this.append_child_center(section);
         button.addEventListener("click", () => {
-            control.modal_window(title, description);
+            this.modal_window(title, description);
         })
     }
 
     create_border(section) {
         let border = this.create_element("div", "border", "border");
         section.appendChild(border);
-        control.append_child_center(section);
+        this.append_child_center(section);
     }
 
     create_dropdown(name) {
@@ -121,44 +121,87 @@ class View {
         let h4 = this.create_element("h4", "", "");
         let h4_t = this.create_text("SELECT CATEGORY");
         h4.appendChild(h4_t);
-        control.append_child_side(h4);
+        this.append_child_side(h4);
         let drop = this.create_element("select", "drop", "select");
         let option;
         drop.addEventListener("change", (e) => {
             flag = 1;
             model.body_section(e.target.value, this);
         })
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < news_name.length; i++) {
             option = this.create_element("option", "", "");
-            option.setAttribute("value", arr[i]);
-            option.setAttribute("id", arr[i]);
-            let option_t = this.create_text(arr[i]);
+            option.setAttribute("value", news_name[i]);
+            option.setAttribute("id", news_name[i]);
+            let option_t = this.create_text(news_name[i]);
             option.appendChild(option_t);
             drop.appendChild(option);
-            control.append_child_side(drop);
-            if (arr[i] == name) {
+            this.append_child_side(drop);
+            if (news_name[i] == name) {
                 this.selectedOption = i;
             }
         }
         document.getElementById("select").selectedIndex = this.selectedOption;
     }
 
+    modal_window(title, description) {
+        let modal;
+        modal = view.create_element("div", "modal", "modal");
+        let modal_content = view.create_element("div", "modal_content", "");
+        let modal_head = view.create_element("div", "modal_head", "");
+        let close = view.create_element("span", "close", "");
+        close.addEventListener("click", () => {
+            this.close_section();
+        })
+        let close_t = view.create_text("\u00D7");
+        close.appendChild(close_t);
+        let modal_body = view.create_element("div", "modal_body", "");
+        let modal_head_text = view.create_text(title);
+        let modal_body_text = view.create_text(description);
+        modal_head.appendChild(close);
+        modal_head.appendChild(modal_head_text);
+        modal_body.appendChild(modal_body_text);
+        modal_content.appendChild(modal_head);
+        modal_content.appendChild(modal_body);
+        modal.appendChild(modal_content);
+        document.body.appendChild(modal);
+        modal.style.display = "block";
+    }
+
+    close_section() {
+        let modal = document.getElementById("modal");
+        modal.parentNode.removeChild(modal);
+    }
+
     create_email() {
         let h4 = this.create_element("h4", "", "");
         let h4_t = this.create_text("SUBSCRIBE");
         h4.appendChild(h4_t);
-        control.append_child_side(h4);
+        this.append_child_side(h4);
         let input = this.create_element("input", "email", "email");;
         input.setAttribute("type", "text");
         input.setAttribute("placeholder", "  Email Address");
-        control.append_child_side(input);
+        this.append_child_side(input);
         input = this.create_element("input", "subscribe", "subscribe");
         input.setAttribute("type", "submit");
         input.setAttribute("value", "Subscribe");
         input.addEventListener("click", () => {
             control.validate_Email(document.getElementById("email").value);
         })
-        control.append_child_side(input);
+        this.append_child_side(input);
+    }
+
+    append_child_center(value) {
+        center.appendChild(value);
+        main.appendChild(center);
+        myMain.appendChild(main);
+        document.body.appendChild(myMain);
+    }
+
+    append_child_side(value) {
+        side.appendChild(value);
+        main.appendChild(side);
+        myMain.appendChild(main);
+        document.body.appendChild(myMain);
     }
 }
 
@@ -166,7 +209,7 @@ let view = new View();
 let model = new Model();
 let control = new Control();
 control.load(view, model);
-const arr = ["abc-news-au", "bbc-news", "cnn", "usa-today", "espn-cric-info"];
+const news_name = ["abc-news-au", "bbc-news", "cnn", "usa-today", "espn-cric-info"];
 var flag = 0;
 let myMain = document.getElementById("myMain");
 let main = view.create_element("div", "main", "main");

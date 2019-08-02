@@ -26,7 +26,7 @@ class View {
 
     create_all_tiles(myJson) {
         center.innerHTML = '';
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < myJson.articles.length; i++) {
             let section = this.create_element("div", "section", "section");
             let section1 = this.create_element("div", "section1", "section1");
             let section2 = this.create_element("div", "section2", "section2");

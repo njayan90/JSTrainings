@@ -49,7 +49,7 @@ const CARCOLOR = Symbol(); // give red and no see changes in below console
 const CARMAKE = Symbol();
 const CARMODEL = Symbol();
 
-// console.log(CARCOLOR, CARMAKE, CARMODEL)
+console.log(CARCOLOR, CARMAKE, CARMODEL)
 
 class Car {
     constructor(color, make, model) {
@@ -64,4 +64,4 @@ console.log(myCar);
 myCar.color = `blue`;
 console.log(myCar.color);
 // console.log(myCar);
-// console.log(Symbol.for(`test`) === Symbol.for(`test`))
+//console.log(Symbol.for(`test`) === Symbol.for(`test`))

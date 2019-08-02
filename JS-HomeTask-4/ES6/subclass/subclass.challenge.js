@@ -1,4 +1,3 @@
-
 // inheritance - subclasses
 
 //implement methods in subclass (Human) which will override parent class functionality
@@ -30,18 +29,30 @@ class superhero {
 }
 
 class Human extends superhero {
-    constructor(healthpoints, ...superherostuff) {
+    constructor(healthpoints,city,state, ...superherostuff) {
         super(...superherostuff);
         this._healthpoints = healthpoints;
+        this._city=city;
+        this._state=state;
     }
      set name(name) {
          this._name = name;
      }
+     powerUp(){
+         this._strength+=2;
+     }
+     powerDown(){
+         this._strength/=2;
+     }
+     add_Mr(){
+        this._name="Mr "+this._name;
+      }
 }
-const details = [20, "Bill", 10, 8]
+const details = [20,"New York","New York City","Bill", 10, 8]
 const hero3 = new Human(...details);
 console.log(hero3);
 hero3.name = "sai";
 console.log(hero3)
 const hero4 = new superhero(20, "abc", 8);
 console.log(hero4);
+

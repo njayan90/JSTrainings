@@ -8,6 +8,7 @@ let city = `Chicago` //data we got from somewhere else (api or database)
 let userId = 3; //data we got from somewhere else (api or database)
 let command = `SELECT *`;
 let table = `USERS`;
+let clause= `ORDER by`
 let whereClauses = [
     `uid = ${2+1}`,
     `OR city = ${city}`
@@ -18,5 +19,13 @@ let whereClauses = [
 // Spread syntax is a more common and easy here if you are comfortable with it
 function checkQuery() {
     //Your validation code here...
+    if(command===`SELECT *` || command===`UPDATE *`){
+    finalQuery=`${command} from ${table} where ${whereClauses[0]} ${whereClauses[1]} ${clause} asc`;
     return (finalQuery);
+    }
+    else{
+        return("ERROR");
+    }
 }
+
+console.log(checkQuery());

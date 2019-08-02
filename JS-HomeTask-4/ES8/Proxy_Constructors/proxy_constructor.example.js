@@ -32,7 +32,7 @@ let handler = {
     // this has all the above properties to trap
     // get trap // takes 2 args - target object and the property asked for 
     get: (target, propName) => {
-        // console.log(target, propName);
+        console.log(target, propName);
         //return undefined;
         return target[propName];
     },

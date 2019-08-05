@@ -22,16 +22,16 @@ class superhero {
         this._speed = speed;
         // this.goodHero = true; // focus on this
     }
-    powerUp(){
+    powerUp() {
         this.strength += 5;
     }
-    get name(){
+    get name() {
         console.log("get name");
     }
-    set name(newname){
+    set name(newname) {
         this._name = newname;
     }
-    static goodHero(){
+    static goodHero() {
         return true;
     }
 }
@@ -43,4 +43,6 @@ let hero1 = new superhero(...hulkdetails);
 let hero2 = new superhero(...bulkdetails);
 
 hero1.name = "george";
+let good = superhero.goodHero();
 console.log(hero1)
+console.log(hero1._name + " is GoodHero = " + good);

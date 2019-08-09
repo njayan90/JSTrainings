@@ -13,6 +13,7 @@ export class Control {
         const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (mailformat.test(email)) {
             alert("Successfully Subscribed");
+            console.log("Email Validated");
             localStorage.setItem(r, email);
             return true;
         }

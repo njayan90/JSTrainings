@@ -1,3 +1,4 @@
+import './style.css';
 import {Control} from './control.js';
 import {Model} from './model.js';
 class View {
@@ -22,6 +23,20 @@ class View {
         this.create_all_tiles(myJson);
         this.create_dropdown(name);
         this.create_email();
+        this.create_Headlines();
+    }
+
+    create_Headlines(){
+        let button = this.create_element("button", "button", "headlines");
+        let button_t = this.create_text("Headlines");
+        button.appendChild(button_t);
+        this.append_child_side(button);
+        button.addEventListener("click", () => {
+           import('./headlines.js').then(module=>{
+            module.headlines(this)      
+           }); 
+            
+        })
     }
 
     create_all_tiles(myJson) {
@@ -147,18 +162,18 @@ class View {
 
     modal_window(title, description) {
         let modal;
-        modal = view.create_element("div", "modal", "modal");
-        let modal_content = view.create_element("div", "modal_content", "");
-        let modal_head = view.create_element("div", "modal_head", "");
-        let close = view.create_element("span", "close", "");
+        modal = this.create_element("div", "modal", "modal");
+        let modal_content = this.create_element("div", "modal_content", "");
+        let modal_head = this.create_element("div", "modal_head", "");
+        let close = this.create_element("span", "close", "");
         close.addEventListener("click", () => {
             this.close_section();
         })
-        let close_t = view.create_text("\u00D7");
+        let close_t = this.create_text("\u00D7");
         close.appendChild(close_t);
-        let modal_body = view.create_element("div", "modal_body", "");
-        let modal_head_text = view.create_text(title);
-        let modal_body_text = view.create_text(description);
+        let modal_body = this.create_element("div", "modal_body", "");
+        let modal_head_text = this.create_text(title);
+        let modal_body_text = this.create_text(description);
         modal_head.appendChild(close);
         modal_head.appendChild(modal_head_text);
         modal_body.appendChild(modal_body_text);

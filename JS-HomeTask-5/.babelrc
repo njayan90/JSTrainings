@@ -1,14 +1,5 @@
 {
     "presets": [
-      "@babel/preset-env"
-     
-    ],
-
-    "env": {
-            "production": {
-                "plugins": [
-                    "transform-remove-console"
-                ]
-            }
-        }
-    }
+        "@babel/preset-env"
+    ]
+}

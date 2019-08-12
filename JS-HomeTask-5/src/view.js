@@ -16,6 +16,7 @@ class View {
         p.appendChild(i);
         x.appendChild(p);
         document.body.appendChild(x);
+        
     }
 
     create(myJson, name) {
@@ -232,3 +233,4 @@ let myMain = document.getElementById("myMain");
 let main = view.create_element("div", "main", "main");
 let center = view.create_element("div", "center", "center");
 let side = view.create_element("div", "side", "side");
+console.log("test");

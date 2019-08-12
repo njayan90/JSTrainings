@@ -8,7 +8,6 @@
             });
     }
      function modal_window(view, myJson) {
-
         let modal;
         modal = view.create_element("div", "modal", "modal");
         let modal_content = view.create_element("div", "modal_content", "");

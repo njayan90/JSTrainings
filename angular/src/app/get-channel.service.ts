@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class GetChannelService {
   
-  channel=["abc-news-au", "bbc-news", "cnn", "usa-today", "espn-cric-info","all-sources"];
+  channel=["abc-news-au", "bbc-news", "cnn", "usa-today", "espn-cric-info"];
   constructor() { }
 }

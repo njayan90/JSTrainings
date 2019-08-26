@@ -1,0 +1,16 @@
+<div class="header-bottom">
+	<span>
+		<div class="news-list">
+			<select (change)="getChannelName($event.target.value)">
+				<option *ngFor="let channelName of channel">{{channelName}}</option>
+			</select>
+		</div>
+		<div class="filter">
+			<input type='input' value="Type your text here....">
+			<input type='submit' value='Filter'>
+		</div>
+		<div class="article" (click)='addArticle()'>
+			<button>Add article</button>
+		</div>
+	</span>
+</div>

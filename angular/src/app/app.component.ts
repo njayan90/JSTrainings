@@ -12,8 +12,9 @@ export class AppComponent {
   newsObject:Object;
   @Input() add:boolean=false;
   detailedTile:boolean=false;
+  filterWord:string="";
   constructor(private newsEvent:GetNewsService){
-
+    
   }
   ngOnInit(){
     
@@ -27,11 +28,12 @@ export class AppComponent {
   }
   addArticle(addBoolean:boolean){
     this.add=addBoolean;
-   
-    
   }
   details(detailsBoolean:boolean){
     this.detailedTile=detailsBoolean;
   }
-  
+  filter(filterWord:string){
+    this.filterWord=filterWord;
+   
+  }
 }

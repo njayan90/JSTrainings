@@ -1,3 +1,3 @@
 <app-header-top></app-header-top>
 <app-header-center [channelName]='channelName' ></app-header-center>
-<app-header-bottom (channelEvent)='getChannelName($event)' (addEvent)='addArticle($event);'></app-header-bottom>
+<app-header-bottom (channelEvent)='getChannelName($event)' (addEvent)='addArticle($event);' (filterEvent)='filter($event)'></app-header-bottom>

@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   add:boolean;
   @Output() channelEvent=new EventEmitter();
   @Output() addArticleEvent=new EventEmitter();
+  @Output() filterEvent=new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -23,5 +24,7 @@ export class HeaderComponent implements OnInit {
   this.add=addBoolean;
   this.addArticleEvent.emit(this.add);
    }
-
+filter(filterWord:string){
+  this.filterEvent.emit(filterWord);
+}
 }

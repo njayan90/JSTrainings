@@ -2,7 +2,7 @@
   "name": "js-hometask-5",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/view.js",
+  "main": "./src/main.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode production"
   },

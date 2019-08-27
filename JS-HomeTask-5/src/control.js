@@ -4,7 +4,7 @@ export class Control {
 
     load(view, model) {
         view.header_section();
-        model.body_section("abc-news-au", view);
+        model.body_section("abc-news-au", view,this);
         view.footer_section();
     }
 

@@ -1,9 +1,10 @@
 import './style.css';
-import {Control} from './control.js';
-import {Model} from './model.js';
-class View {
+import {myMain,main,center,side,news_name} from './main.js';
+export var flag = 0;
+export class View {
+
     constructor() {
-    }
+        }
 
     header_section() {
         const x = document.getElementById("myHeader");
@@ -19,11 +20,11 @@ class View {
         
     }
 
-    create(myJson, name) {
+    create(myJson, name,model,control) {
         center.innerHTML = '';
         this.create_all_tiles(myJson);
-        this.create_dropdown(name);
-        this.create_email();
+        this.create_dropdown(name,model);
+        this.create_email(control);
         this.create_Headlines();
     }
 
@@ -133,7 +134,7 @@ class View {
         this.append_child_center(section);
     }
 
-    create_dropdown(name) {
+    create_dropdown(name,model) {
         let selectedOption = 0;
         let side = this.create_element("div", "side", "side");
         let h4 = this.create_element("h4", "", "");
@@ -190,7 +191,7 @@ class View {
         modal.parentNode.removeChild(modal);
     }
 
-    create_email() {
+    create_email(control) {
         let h4 = this.create_element("h4", "", "");
         let h4_t = this.create_text("SUBSCRIBE");
         h4.appendChild(h4_t);
@@ -223,14 +224,3 @@ class View {
     }
 }
 
-let view = new View();
-let model = new Model();
-let control = new Control();
-control.load(view, model);
-const news_name = ["abc-news-au", "bbc-news", "cnn", "usa-today", "espn-cric-info"];
-export var flag = 0;
-let myMain = document.getElementById("myMain");
-let main = view.create_element("div", "main", "main");
-let center = view.create_element("div", "center", "center");
-let side = view.create_element("div", "side", "side");
-console.log("test");

@@ -4,7 +4,7 @@ export class Control {
 
     load(view, model) {
         view.header_section();
-        model.body_section("abc-news-au", view);
+        model.body_section("abc-news-au", view,this);
         view.footer_section();
     }
 
@@ -13,6 +13,7 @@ export class Control {
         const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (mailformat.test(email)) {
             alert("Successfully Subscribed");
+            console.log("Email Validated");
             localStorage.setItem(r, email);
             return true;
         }

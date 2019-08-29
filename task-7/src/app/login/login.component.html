@@ -1,0 +1,12 @@
+<div *ngIf="this.currentPage.getLogin()">
+<div style="text-align: center; margin-top:200px;">
+    <label>Username</label><br>
+    <input #username type='text'><br>
+    <label>Password</label><br>
+    <input #password type='password'><br><br>
+    <button type="button" (click)='checkLogin(username.value,password.value)' [routerLink]="'/news'">Sign In</button>
+    <div *ngIf="message">
+        <p>{{message}}</p>
+    </div>
+</div>
+</div>

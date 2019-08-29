@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
@@ -10,6 +9,8 @@ import { HeaderCenterComponent } from './header/header-center/header-center.comp
 import { HeaderBottomComponent } from './header/header-bottom/header-bottom.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddArticleComponent } from './add-article/add-article.component';
+import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -21,11 +22,15 @@ import { AddArticleComponent } from './add-article/add-article.component';
     HeaderTopComponent,
     HeaderCenterComponent,
     HeaderBottomComponent,
-    AddArticleComponent
+    AddArticleComponent,
+    LoginComponent,
+    
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

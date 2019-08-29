@@ -4,8 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CurrentPageService {
-  add:boolean=false;
-  details:boolean=false;
+  add:boolean;
+  details:boolean;
+  login:boolean=true;
   constructor() { }
 
   setAdd(value:boolean){
@@ -19,5 +20,11 @@ export class CurrentPageService {
   }
   getDetails(){
     return(this.details);
+  }
+  setLogin(value:boolean){
+    this.login=value;
+  }
+  getLogin(){
+    return(this.login);
   }
 }

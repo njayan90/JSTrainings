@@ -14,18 +14,19 @@ export class GetNewsService {
     private getChannel:GetChannelService ) { }
   
   getNews(channel:string){
-    return this.http.get("https://newsapi.org/v1/articles?source="+channel+"&apiKey=53ef5f1863a545df883ffe0abfc6b813");
+    return this.http.get("https://newsapi.org/v1/articles?source="+channel+"&apiKey=7fb5947dd79d4f14a11e0b19cca679d2");
   }
   getNewsObject(){
     for(let i=0;i<this.getChannel.channel.length;i++){
-      this.getNews(this.getChannel.channel[i]).subscribe(news=>this.newsObject[i]=news);
-    }
+      if(this.getChannel.channel[i]!="all-sources"){
+       this.getNews(this.getChannel.channel[i]).subscribe(news=>this.newsObject[i]=news);
+      }
+     }
    return(this.newsObject);
   }
   setAddArticles(addedArticle:any){
     this.addedArticles.push(addedArticle);
-    console.log(this.addedArticles);
-  }
+      }
   getAddArticles(){
     return(this.addedArticles);
   }

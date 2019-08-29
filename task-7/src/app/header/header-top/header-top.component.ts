@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrentPageService } from 'src/app/current-page.service';
 
 @Component({
   selector: 'app-header-top',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderTopComponent implements OnInit {
 
-  constructor() { }
+  constructor(private currentPage:CurrentPageService) { }
 
   ngOnInit() {
   }
+logout(){
+  this.currentPage.setLogin(true);
 
+}
 }

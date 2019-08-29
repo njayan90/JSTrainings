@@ -1,20 +1,23 @@
 <form style="display: flex; margin-left:500px; margin-top:125px;">
-<div>
-<label>Headline</label><br>
-<input #headline type='text'><br>
-<label>Short Description</label><br>
-<input #description type="text"><br>
-<label>Content</label><br>
-<input type="text" style="height:100px;"><br>
-</div>
-<div style="margin-left:25px; ">
-    <label>Date</label><br>
-    <input #date type="text" ><br>
-    <label>Author</label><br>
-    <input type="text"><br>
-    <label>Image Url</label><br>
-    <input #image type="text"><br><br>
-    <button (click)="saveArticle(headline.value,description.value,date.value,image.value)">Save</button>
-    <span><button (click)="returnMainPage()">Cancel</button></span>
-</div>
+    <div>
+        <label>Headline</label><br>
+        <input #headline type='text'><br>
+        <label>Short Description</label><br>
+        <input #description type="text"><br>
+        <label>Content</label><br>
+        <input type="text" style="height:100px;"><br>
+    </div>
+    <div style="margin-left:25px; ">
+        <label>Date</label><br>
+        <input #date type="text"><br>
+        <label>Author</label><br>
+        <input type="text"><br>
+        <label>Image Url</label><br>
+        <input #image type="text"><br><br>
+        <button (click)="saveArticle(headline.value,description.value,date.value,image.value)">Save</button>
+        <span><button (click)="returnMainPage()">Cancel</button></span>
+        <div *ngIf="message">
+            <p>{{message}}</p>
+        </div>
+    </div>
 </form>

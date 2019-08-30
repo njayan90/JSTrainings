@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentPageService } from 'src/app/current-page.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-header-top',
@@ -8,12 +9,12 @@ import { CurrentPageService } from 'src/app/current-page.service';
 })
 export class HeaderTopComponent implements OnInit {
 
-  constructor(private currentPage:CurrentPageService) { }
+  constructor(private currentPage:CurrentPageService, private auth: AuthService) { }
 
   ngOnInit() {
   }
 logout(){
   this.currentPage.setLogin(true);
-
+  this.auth.logout();
 }
 }

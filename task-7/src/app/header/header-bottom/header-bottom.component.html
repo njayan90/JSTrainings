@@ -9,7 +9,7 @@
 			<input #filterWord type='input'>
 			<button (click)="filter(filterWord.value)">Filter</button>
 		</div>
-		<div class="article" (click)='setAdd()'>
+		<div *ngIf='this.authService.user==="admin"' class="article" (click)='setAdd()'>
 			<button>Add article</button>
 		</div>
 	</span>

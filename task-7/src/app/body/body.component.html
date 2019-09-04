@@ -1,7 +1,7 @@
-<div *ngIf="!this.currentPage.getAdd() && !this.currentPage.getDetails() && !this.newsService.getFilterWord()">
+<div *ngIf="!add && !details && !filterWord">
     <div *ngFor="let newsSource of newsObject">
         <div *ngIf="newsSource">
-            <div *ngIf="newsSource.source===this.newsService.getChannelName() && this.newsService.getChannelName()!='all-sources'">
+            <div *ngIf="newsSource.source===newsService.getChannelName()">
                 <div *ngFor='let news of newsSource.articles'
                     style="display:flex; margin-top:20px; margin-bottom:40px;">
                     <div>
@@ -20,7 +20,7 @@
 </div>
 
 <div
-    *ngIf="!this.currentPage.getAdd() && !this.currentPage.getDetails() && !this.newsService.getFilterWord() && this.newsService.getChannelName()==='all-sources'">
+    *ngIf="!add && !details && !filterWord && newsService.getChannelName()==='all-sources'">
     <div *ngFor="let newsSource of newsObject">
         <div *ngIf="newsSource">
             <div *ngFor='let news of newsSource.articles' style="display:flex; margin-top:20px; margin-bottom:40px;">
@@ -31,7 +31,7 @@
                     <h4>{{news.title}}</h4>
                     <p>{{news.publishedAt | date:'medium'}}</p>
                     <p>{{news.description}}</p>
-                    <button (click)="fullDetails(news)">Continue Reading</button>
+                    <button (click)="fullDetails(news)" >Continue Reading</button>
                 </div>
             </div>
         </div>
@@ -39,9 +39,9 @@
 </div>
 
 
-<div *ngIf='addedArticles && !this.currentPage.getAdd() && !this.currentPage.getDetails()'>
+<div *ngIf='addedArticles && !add && !details'>
     <div *ngFor="let news of addedArticles">
-        <div *ngIf='news.source===this.newsService.getChannelName()'
+        <div *ngIf='news.source===newsService.getChannelName()'
             style="display:flex; margin-top:20px; margin-bottom:40px;">
             <div>
                 <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
@@ -50,36 +50,28 @@
                 <h4>{{news.title}}</h4>
                 <p>{{news.publishedAt | date:'medium'}}</p>
                 <p>{{news.description}}</p>
-                <button (click)="fullDetails(news)">Continue Reading</button>
+                <button (click)="fullDetails(news)" >Continue Reading</button>
             </div>
         </div>
     </div>
 </div>
 
 
-<div *ngIf="this.currentPage.getAdd() && !this.currentPage.getDetails()">
+<div *ngIf="add && !details">
     <app-add-article></app-add-article>
 </div>
 
 
-<div *ngIf="this.currentPage.getDetails()" style="display: flex; margin-top:20px;">
-    <div>
-        <img src="{{detailedNews.urlToImage}}" style="width:200px;height: 200px;">
-    </div>
-    <div style="margin-left:25px; margin-top:-21px;">
-        <h4>{{detailedNews.title}}</h4>
-        <p>{{detailedNews.publishedAt | date:'medium'}}</p>
-        <p>{{detailedNews.description}}</p>
-        <button (click)="returnMainPage()">Back</button>
-    </div>
-</div>
+    <div *ngIf="details" >
+        <app-details><button (click)="returnMainPage()">Back</button></app-details>
+        </div>
 
-<div *ngIf="this.newsService.getFilterWord() && !this.currentPage.getDetails() ">
+<div *ngIf="filterWord && !details ">
     <div *ngFor="let newsSource of newsObject">
         <div *ngIf="newsSource">
-            <div *ngIf="newsSource.source===this.newsService.getChannelName()">
+            <div *ngIf="newsSource.source===newsService.getChannelName()">
                 <div *ngFor="let news of newsSource.articles">
-                    <div *ngIf="news.description.includes(this.newsService.getFilterWord())"
+                    <div *ngIf="news.description.includes(filterWord)"
                         style="display: flex; margin-top:20px; margin-bottom:40px;">
                         <div>
                             <img src="{{news.urlToImage}}" style="width:150px; height:150px;">

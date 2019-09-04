@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, DefaultIterableDiffer } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GetNewsService } from '../get-news.service';
 import { CurrentPageService } from '../current-page.service';
 
@@ -8,25 +8,30 @@ import { CurrentPageService } from '../current-page.service';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-  newsObject:object[];
-  addedArticles=this.newsService.getAddArticles();
-  detailedNews:Object;
-   constructor(private newsService:GetNewsService,
-    private currentPage:CurrentPageService) { }
+  newsObject: object[];
+  add: boolean = false;
+  filterWord: string;
+  details: boolean;
+  addedArticles = this.newsService.getAddArticles();
+  constructor(private newsService: GetNewsService,
+    private currentPage: CurrentPageService) { }
 
   ngOnInit() {
-  this.getNewsObject();
-   
+    this.getNewsObject();
+    this.currentPage.addEmitter.subscribe(addBoolean => this.add = addBoolean);
+    this.newsService.filterWordEmitter.subscribe(filter => this.filterWord = filter);
+    this.currentPage.detailsEmitter.subscribe(details => this.details = details);
   }
-  fullDetails(news:Object){
-    this.detailedNews=news;
-    this.currentPage.setDetails(true);
- }
+  getNewsObject() {
+    this.newsObject = this.newsService.getNewsObject();
+  }
+
+  fullDetails(news: object) {
+    this.currentPage.detailsEmitter.next(true);
+    this.newsService.setDetailedNews(news);
+
+  }
   returnMainPage(){
-    this.currentPage.setDetails(false);
-   
-  }
-  getNewsObject(){
-    this.newsObject=this.newsService.getNewsObject();
+    this.currentPage.detailsEmitter.next(false);
   }
 }

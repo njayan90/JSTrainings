@@ -14,7 +14,7 @@ export class HeaderTopComponent implements OnInit {
   ngOnInit() {
   }
 logout(){
-  this.currentPage.setLogin(true);
+  this.currentPage.loginEmitter.next(true);
   this.auth.logout();
 }
 }

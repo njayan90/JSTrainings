@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DetailsComponent } from './details/details.component';
+
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     HeaderBottomComponent,
     AddArticleComponent,
     LoginComponent,
+    DetailsComponent
     
   ],
   imports: [

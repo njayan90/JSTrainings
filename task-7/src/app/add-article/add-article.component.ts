@@ -1,4 +1,4 @@
-import { Component, OnInit,Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CurrentPageService } from '../current-page.service';
 import { GetNewsService } from '../get-news.service';
 
@@ -11,7 +11,7 @@ import { GetNewsService } from '../get-news.service';
 })
 export class AddArticleComponent implements OnInit{
   message:string="";
-  channelName:string=this.getNews.getChannelName();
+  channelName:string;
   addedArticles={
     source:"",
     title:"",
@@ -23,17 +23,19 @@ export class AddArticleComponent implements OnInit{
     private getNews:GetNewsService) { }
 
   ngOnInit() {
+    
   }
   saveArticle(headline:string,description:string,date:string,img:string){
     if(headline && description && date && img){
-      this.addedArticles.source=this.channelName;
+      this.addedArticles.source=this.getNews.getChannelName();
       this.addedArticles.title=headline;
       this.addedArticles.description=description;
       this.addedArticles.publishedAt=date;
       this.addedArticles.urlToImage=img;
       this.getNews.setAddArticles(this.addedArticles);
-      this.currentPage.setAdd(false);
+      this.currentPage.addEmitter.next(false);
       this.message="";
+      
     }
     else{
      this.message="Incomplete fields";
@@ -42,7 +44,7 @@ export class AddArticleComponent implements OnInit{
   }
   returnMainPage()
   {
-    this.currentPage.setAdd(false);
+    this.currentPage.addEmitter.next(false);
   }
 
   

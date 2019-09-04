@@ -14,7 +14,6 @@ export class AuthService {
   username:"user",
   password:"user"
   }]
-
   loggedIn:boolean= false;
   constructor() { }
 

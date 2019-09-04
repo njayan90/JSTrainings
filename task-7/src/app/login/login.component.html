@@ -1,4 +1,4 @@
-<div *ngIf="this.currentPage.getLogin()">
+<div *ngIf="login">
 <form #f="ngForm">
     <div style="text-align: center; margin-top:200px;">
     <label>Username</label><br>
@@ -12,3 +12,4 @@
 </div>
 </form>
 </div>
+<ng-content></ng-content>

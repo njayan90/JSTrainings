@@ -1,7 +1,7 @@
 import { Component, OnInit,EventEmitter,Input,Output } from '@angular/core';
-import { GetChannelService } from 'src/app/get-channel.service';
 import { CurrentPageService } from 'src/app/current-page.service';
 import { GetNewsService } from 'src/app/get-news.service';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
@@ -11,24 +11,23 @@ import { GetNewsService } from 'src/app/get-news.service';
 })
 export class HeaderBottomComponent implements OnInit {
   channel:string[]=[];
-  channelName:string;
-  constructor(private getChannel:GetChannelService,
-    private currentPage:CurrentPageService, private get:GetNewsService) { }
+  channelName:string='abc-news-au';
+  constructor(private currentPage:CurrentPageService, private get:GetNewsService , private authService:AuthService) { }
 
   ngOnInit() {
-    this.channel=this.getChannel.channel;
+    this.channel=this.get.channel;
+    this.get.setChannelName(this.channelName);
   }
-  getChannelName(channel:string){
-    this.get.setChannelName(channel);
-    this.currentPage.setAdd(false);
-    this.currentPage.setDetails(false);
+  getChannelName(chName:string){
+    this.get.setChannelName(chName);
+    this.currentPage.addEmitter.next(false);
   }
   
   filter(filterWord:string){
-    this.get.setFilterWord(filterWord);
+    this.get.filterWordEmitter.next(filterWord);
   }
   setAdd(){
-    this.currentPage.setAdd(true);
+   this.currentPage.addEmitter.next(true);
     }
  
 

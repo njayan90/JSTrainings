@@ -1,7 +1,4 @@
-import { Component,OnInit, Input } from '@angular/core';
-import { GetNewsService } from './get-news.service';
-
-
+import { Component,OnInit} from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -21,6 +21,7 @@ export class HeaderBottomComponent implements OnInit {
   getChannelName(chName:string){
     this.get.setChannelName(chName);
     this.currentPage.addEmitter.next(false);
+    this.currentPage.detailsEmitter.next(false);
   }
   
   filter(filterWord:string){

@@ -3,7 +3,7 @@
         <div *ngIf="newsSource">
             <div *ngIf="newsSource.source===newsService.getChannelName()">
                 <div *ngFor='let news of newsSource.articles'
-                    style="display:flex; margin-top:20px; margin-bottom:40px;">
+                    style="display:flex; margin-top:20px; margin-bottom:45px;">
                     <div>
                         <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
                     </div>
@@ -12,7 +12,9 @@
                         <p>{{news.publishedAt | date:'medium'}}</p>
                         <p>{{news.description}}</p>
                         <button (click)="fullDetails(news)">Continue Reading</button>
+                        <span style="margin-left:20px; font-weight: bold">Total Comments:{{news.commentCount}}</span>
                     </div>
+                    
                 </div>
             </div>
         </div>

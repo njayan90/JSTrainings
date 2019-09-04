@@ -5,7 +5,9 @@
     }
     
     .logout{
-        margin-left:1150px;
+        position: absolute;
+        top:0;
+        right:25px;
         width: 70px;
         height:25px;
         margin-top:10px;

@@ -13,6 +13,7 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DetailsComponent } from './details/details.component';
+import { CommentComponent } from './comment/comment.component';
 
 
 
@@ -27,7 +28,8 @@ import { DetailsComponent } from './details/details.component';
     HeaderBottomComponent,
     AddArticleComponent,
     LoginComponent,
-    DetailsComponent
+    DetailsComponent,
+    CommentComponent
     
   ],
   imports: [

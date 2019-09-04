@@ -7,13 +7,11 @@ import { GetNewsService } from '../get-news.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  detailedNews:object;
+  detailedNews:any;
   constructor(private newsService:GetNewsService) { }
 
   ngOnInit() {
-
    this.detailedNews=this.newsService.getDetailedNews();
-  
-  }
+   }
 
 }

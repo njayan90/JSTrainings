@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetNewsService } from '../get-news.service';
 import { CurrentPageService } from '../current-page.service';
-
+import {AppComponent} from '../app.component';
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
@@ -14,19 +14,16 @@ export class BodyComponent implements OnInit {
   details: boolean;
   addedArticles = this.newsService.getAddArticles();
   constructor(private newsService: GetNewsService,
-    private currentPage: CurrentPageService) { }
+    private currentPage: CurrentPageService,private app:AppComponent) { }
 
   ngOnInit() {
-    this.getNewsObject();
+    this.newsObject=this.app.newsObject;
     this.currentPage.addEmitter.subscribe(addBoolean => this.add = addBoolean);
     this.newsService.filterWordEmitter.subscribe(filter => this.filterWord = filter);
     this.currentPage.detailsEmitter.subscribe(details => this.details = details);
-  }
-  getNewsObject() {
-    this.newsObject = this.newsService.getNewsObject();
-  }
-
-  fullDetails(news: object) {
+ }
+ 
+ fullDetails(news: object) {
     this.currentPage.detailsEmitter.next(true);
     this.newsService.setDetailedNews(news);
 

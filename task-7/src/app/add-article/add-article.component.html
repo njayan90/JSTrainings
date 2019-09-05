@@ -9,7 +9,7 @@
     </div>
     <div style="margin-left:25px; ">
         <label>Date</label><br>
-        <input #date type="text"><br>
+        <input #date id="date" type="date"><br>
         <label>Author</label><br>
         <input type="text"><br>
         <label>Image Url</label><br>
@@ -21,3 +21,6 @@
         </div>
     </div>
 </form>
+<script type="text/javacript">
+    document.getElementById('date').value= today;
+ </script>

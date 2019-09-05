@@ -12,7 +12,6 @@ export class BodyComponent implements OnInit {
   add: boolean = false;
   filterWord: string;
   details: boolean;
-  addedArticles = this.newsService.getAddArticles();
   constructor(private newsService: GetNewsService,
     private currentPage: CurrentPageService,private app:AppComponent) { }
 

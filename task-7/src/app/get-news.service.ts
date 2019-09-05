@@ -8,7 +8,6 @@ import { AuthService } from './auth.service';
 })
 export class GetNewsService {
   channel=["abc-news-au", "bbc-news", "cnn", "usa-today", "espn-cric-info","all-sources"];
-  addedArticles=[];
   channelName:string;
   newsObject:any[]=[];
   detailedNews:object;
@@ -21,7 +20,7 @@ export class GetNewsService {
   constructor(private http:HttpClient ,private auth:AuthService) { }
   
   getNews(channel:string){
-    return this.http.get("https://newsapi.org/v1/articles?source="+channel+"&apiKey=a4f5f66f4a964fa59a4863ed99af16a5");
+    return this.http.get("https://newsapi.org/v1/articles?source="+channel+"&apiKey=7a2abd0cdd9a4289bcb210359d740088");
   }
   getNewsObject(){
     for(let i=0;i<this.channel.length;i++){
@@ -38,11 +37,14 @@ export class GetNewsService {
     return(this.newsObject);
   }
   setAddArticles(addedArticle:any){
-    this.addedArticles.push(addedArticle);
+    for(let i=0;i<this.newsObject.length;i++){
+      if(addedArticle.source===this.newsObject[i].source){
+        this.newsObject[i].articles.push(addedArticle);
+        break;
       }
-  getAddArticles(){
-    return(this.addedArticles);
-  }
+    }
+      }
+  
   setChannelName(channel:string){
     this.channelName=channel;
   }
@@ -56,7 +58,7 @@ export class GetNewsService {
     return this.detailedNews;
   }
   commentUpdate(title: string, comment: string) {
-    for (let i = 0; i < this.newsObject.length; i++) {
+   for (let i = 0; i < this.newsObject.length; i++) {
       if (this.newsObject[i].source === this.getChannelName()) {
         for (let j = 0; j < this.newsObject[i].articles.length; j++) {
           if (this.newsObject[i].articles[j].title === title) {
@@ -69,4 +71,4 @@ export class GetNewsService {
       }
     }
   }
-    }
+   }

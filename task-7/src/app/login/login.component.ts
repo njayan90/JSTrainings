@@ -23,7 +23,5 @@ onSubmit(form: NgForm){
       else{
         this.message="Invalid UserName/Password";
       }
-     
   }
-
 }

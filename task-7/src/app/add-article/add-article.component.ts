@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CurrentPageService } from '../current-page.service';
 import { GetNewsService } from '../get-news.service';
 
-
-
 @Component({
   selector: 'app-add-article',
   templateUrl: './add-article.component.html',
@@ -17,7 +15,9 @@ export class AddArticleComponent implements OnInit{
     title:"",
     description:"",
     publishedAt:"",
-    urlToImage:""
+    urlToImage:"",
+    comments:[],
+    commentCount:0
   };
   constructor(private currentPage:CurrentPageService,
     private getNews:GetNewsService) { }
@@ -46,8 +46,4 @@ export class AddArticleComponent implements OnInit{
   {
     this.currentPage.addEmitter.next(false);
   }
-
-  
-  
-
 }

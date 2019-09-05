@@ -9,7 +9,5 @@ import { GetNewsService } from 'src/app/get-news.service';
 export class HeaderCenterComponent implements OnInit {
   constructor(private newsService:GetNewsService) { }
   ngOnInit() {
-   
-  }
-
+     }
 }

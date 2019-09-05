@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 export class CommentComponent implements OnInit {
   detailedNews:any;
   user:string;
+  button:any;
   constructor(private newsService:GetNewsService,private auth:AuthService) { }
 
   ngOnInit() {
@@ -17,5 +18,7 @@ export class CommentComponent implements OnInit {
     }
   addComment(comment:string){
     this.detailedNews=this.newsService.commentUpdate(this.detailedNews.title,comment);
+    this.button=document.getElementById('comment');
+    this.button.value='';
     }
 }

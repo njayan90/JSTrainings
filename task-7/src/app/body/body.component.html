@@ -1,43 +1,5 @@
-<div *ngIf="!add && !details && !filterWord">
-    <div *ngFor="let newsSource of newsObject">
-        <div *ngIf="newsSource">
-            <div *ngIf="newsSource.source===newsService.getChannelName()">
-                <div *ngFor='let news of newsSource.articles'
-                    style="display:flex; margin-top:20px; margin-bottom:45px;">
-                    <div>
-                        <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
-                    </div>
-                    <div style="margin-left:25px; margin-top:-21px;">
-                        <h4>{{news.title}}</h4>
-                        <p>{{news.publishedAt | date:'medium'}}</p>
-                        <p>{{news.description}}</p>
-                        <button (click)="fullDetails(news)">Continue Reading</button>
-                        <span style="margin-left:20px; font-weight: bold">Total Comments:{{news.commentCount}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div *ngIf="!add && !details && !filterWord && newsService.getChannelName()==='all-sources'">
-    <div *ngFor="let newsSource of newsObject">
-        <div *ngIf="newsSource">
-            <div *ngFor='let news of newsSource.articles' style="display:flex; margin-top:20px; margin-bottom:40px;">
-                <div>
-                    <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
-                </div>
-                <div style="margin-left:25px; margin-top:-21px;">
-                    <h4>{{news.title}}</h4>
-                    <p>{{news.publishedAt | date:'medium'}}</p>
-                    <p>{{news.description}}</p>
-                    <button (click)="fullDetails(news)">Continue Reading</button>
-                    <span style="margin-left:20px; font-weight: bold">Total Comments:{{news.commentCount}}</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<app-news></app-news>
 
 <div *ngIf="add && !details">
     <app-add-article></app-add-article>
@@ -47,25 +9,3 @@
     <app-details><button (click)="returnMainPage()">Back</button></app-details>
 </div>
 
-<div *ngIf="filterWord && !details ">
-    <div *ngFor="let newsSource of newsObject">
-        <div *ngIf="newsSource">
-            <div *ngIf="newsSource.source===newsService.getChannelName()">
-                <div *ngFor="let news of newsSource.articles">
-                    <div *ngIf="news.description.includes(filterWord)"
-                        style="display: flex; margin-top:20px; margin-bottom:40px;">
-                        <div>
-                            <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
-                        </div>
-                        <div style="margin-left:25px; margin-top:-21px;">
-                            <h4>{{news.title}}</h4>
-                            <p>{{news.publishedAt | date:"medium"}}</p>
-                            <p>{{news.description}}</p>
-                            <button (click)="fullDetails(news)">Continue Reading</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DetailsComponent } from './details/details.component';
 import { CommentComponent } from './comment/comment.component';
+import { NewsComponent } from './news/news.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { CommentComponent } from './comment/comment.component';
     AddArticleComponent,
     LoginComponent,
     DetailsComponent,
-    CommentComponent
+    CommentComponent,
+    NewsComponent,
     
   ],
   imports: [

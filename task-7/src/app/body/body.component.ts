@@ -16,6 +16,7 @@ export class BodyComponent implements OnInit {
   ngOnInit() {
    this.currentPage.addEmitter.subscribe(addBoolean => this.add = addBoolean);
    this.currentPage.detailsEmitter.subscribe(details => this.details = details);
+ 
  }
  
  fullDetails(news: object) {

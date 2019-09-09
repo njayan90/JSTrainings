@@ -54,6 +54,7 @@ export class GetNewsService {
   getDetailedNews() {
     return this.detailedNews;
   }
+
   commentUpdate(title: string, comment: string) {
     for (let i = 0; i < this.newsObject.length; i++) {
       if (this.newsObject[i].source === this.getChannelName()) {
@@ -68,7 +69,6 @@ export class GetNewsService {
       }
     }
   }
-
   getSourceNews() {
     if (this.getChannelName() != 'all-sources') {
       this.news = this.newsObject.find(news => news.source === this.getChannelName())

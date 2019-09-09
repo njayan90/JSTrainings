@@ -1,55 +1,43 @@
-<div *ngIf="!add && !details && !filterWord">
+<div *ngIf="!add && !details">
     <div *ngIf="newsService.getChannelName()!='all-sources' ; else allSources">
-        <div *ngFor='let news of this.newsService.getSourceNews().articles'
-            style="display:flex; margin-top:20px; margin-bottom:45px;">
-            <div>
-                <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
-            </div>
-            <div style="margin-left:25px; margin-top:-21px;">
-                <h4>{{news.title}}</h4>
-                <p>{{news.publishedAt | date:'medium'}}</p>
-                <p>{{news.description}}</p>
-                <button (click)="fullDetails(news)">Continue Reading</button>
-                <span style="margin-left:20px; font-weight: bold">Total Comments:{{news.commentCount}}</span>
+        <div *ngFor='let news of this.newsService.getSourceNews().articles'>
+            <div *ngIf="news.description.includes(filterWord) || !filterWord"
+                style=" display:flex; margin-top:20px; margin-bottom:45px;">
+                <div>
+                    <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
+                </div>
+                <div style="margin-left:25px; margin-top:-21px;">
+                    <h4>{{news.title}}</h4>
+                    <p>{{news.publishedAt | date:'medium'}}</p>
+                    <p>{{news.description}}</p>
+                    <button (click)="fullDetails(news)">Continue Reading</button>
+                    <span style="margin-left:20px; font-weight: bold">Total Comments:{{news.commentCount}}</span>
+                </div>
             </div>
         </div>
     </div>
 
+
     <ng-template #allSources>
         <div *ngFor="let newsSource of newsService.getSourceNews()">
             <div *ngIf="newsSource">
-                <div *ngFor='let news of newsSource.articles'
-                    style="display:flex; margin-top:20px; margin-bottom:40px;">
-                    <div>
-                        <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
-                    </div>
-                    <div style="margin-left:25px; margin-top:-21px;">
-                        <h4>{{news.title}}</h4>
-                        <p>{{news.publishedAt | date:'medium'}}</p>
-                        <p>{{news.description}}</p>
-                        <button (click)="fullDetails(news)">Continue Reading</button>
-                        <span style="margin-left:20px; font-weight: bold">Total Comments:{{news.commentCount}}</span>
+                <div *ngFor='let news of newsSource.articles'>
+                    <div *ngIf="news.description.includes(filterWord) || !filterWord"
+                        style="display:flex; margin-top:20px; margin-bottom:40px;">
+                        <div>
+                            <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
+                        </div>
+                        <div style="margin-left:25px; margin-top:-21px;">
+                            <h4>{{news.title}}</h4>
+                            <p>{{news.publishedAt | date:'medium'}}</p>
+                            <p>{{news.description}}</p>
+                            <button (click)="fullDetails(news)">Continue Reading</button>
+                            <span style="margin-left:20px; font-weight: bold">Total
+                                Comments:{{news.commentCount}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </ng-template>
-</div>
-
-<div *ngIf="filterWord && !details ">
-    <div *ngFor="let news of this.newsService.getSourceNews().articles">
-        <div *ngIf="news.description.includes(filterWord)" style="display: flex; margin-top:20px; margin-bottom:40px;">
-            <div>
-                <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
-            </div>
-            <div style="margin-left:25px; margin-top:-21px;">
-                <h4>{{news.title}}</h4>
-                <p>{{news.publishedAt | date:"medium"}}</p>
-                <p>{{news.description}}</p>
-                <button (click)="fullDetails(news)">Continue Reading</button>
-                <span style="margin-left:20px; font-weight: bold">Total
-                    Comments:{{news.commentCount}}</span>
-            </div>
-        </div>
-    </div>
 </div>

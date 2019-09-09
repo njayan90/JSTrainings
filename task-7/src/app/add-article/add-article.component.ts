@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentPageService } from '../current-page.service';
 import { GetNewsService } from '../get-news.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-article',
@@ -20,7 +21,7 @@ export class AddArticleComponent implements OnInit{
     commentCount:0
   };
   constructor(private currentPage:CurrentPageService,
-    private getNews:GetNewsService) { }
+    private getNews:GetNewsService, private route:Router) { }
 
   ngOnInit() {
     
@@ -35,6 +36,7 @@ export class AddArticleComponent implements OnInit{
       this.getNews.setAddArticles(this.addedArticles);
       this.currentPage.addEmitter.next(false);
       this.message="";
+      this.route.navigate(['/news']);
       
     }
     else{

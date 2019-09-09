@@ -3,6 +3,7 @@
         <h4 style="margin-left:150px;">Comment</h4>
         <input #comment type='input' style="height:100px; width:400px;" id='comment'><br><br>
         <button type="submit" (click)="addComment(comment.value)" style="margin-left:150px">Publish</button>
+        <p style="margin-left:110px">{{message}}</p>
     </div>
     
     <div style="width:50%; border:1px solid black; height:15em; overflow: hidden;">

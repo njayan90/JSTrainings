@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { GetNewsService } from '../get-news.service';
 import { CurrentPageService } from '../current-page.service';
 
@@ -8,6 +8,7 @@ import { CurrentPageService } from '../current-page.service';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
+  @Input() news:any;
   add:boolean;
   details:boolean;
   filterWord:string;

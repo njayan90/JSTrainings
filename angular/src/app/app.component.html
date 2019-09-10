@@ -1,3 +1,3 @@
-<app-header (channelEvent)="getChannelName($event)" (addArticleEvent)='addArticle($event)'></app-header>
-<app-body [channelName]='channelName' [newsObject]='newsObject' [detailedTile]='detailedTile' [add]='add' (addEvent)='addArticle($event)' (detailedEvent)='details($event)'></app-body>
+<app-header (channelEvent)="getChannelName($event)" (addArticleEvent)='addArticle($event)' (filterEvent)='filter($event)'></app-header>
+<app-body [channelName]='channelName' [newsObject]='newsObject' [detailedTile]='detailedTile' [add]='add' (addEvent)='addArticle($event)' (detailedEvent)='details($event)' [filterWord]='filterWord'></app-body>
 <app-footer></app-footer>

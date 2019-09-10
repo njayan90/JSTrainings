@@ -10,6 +10,7 @@ export class BodyComponent implements OnInit {
   @Output() addEvent = new EventEmitter();
   @Output() detailedEvent=new EventEmitter();
   @Input() detailedTile:boolean;
+  @Input() filterWord:string;
   addedArticles=[];
   detailedNews:Object;
   @Input() add:boolean;
@@ -34,7 +35,6 @@ export class BodyComponent implements OnInit {
   }
   addedNews(addedArticle){
     this.addedArticles.push(addedArticle);
-    
   }
 
 }

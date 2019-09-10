@@ -12,6 +12,7 @@ export class HeaderBottomComponent implements OnInit {
   add:boolean=false;
   @Output() channelEvent=new EventEmitter();
   @Output() addEvent=new EventEmitter();
+  @Output() filterEvent=new EventEmitter();
   constructor(private getChannel:GetChannelService) { }
 
   ngOnInit() {
@@ -24,6 +25,9 @@ export class HeaderBottomComponent implements OnInit {
   addArticle(){
     this.add=true;
     this.addEvent.emit(this.add);
+  }
+  filter(filterWord:string){
+    this.filterEvent.emit(filterWord);
   }
  
 

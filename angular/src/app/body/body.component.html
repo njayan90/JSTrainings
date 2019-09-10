@@ -1,4 +1,4 @@
-<div *ngIf="!add && !detailedTile && newsObject">
+<div *ngIf="!add && !detailedTile && newsObject && !filterWord">
     <div *ngFor="let news of newsObject.articles" style="display:flex; margin-top:20px; margin-bottom:40px;">
         <div>
             <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
@@ -47,9 +47,9 @@
     </div>
 </div>
 
-<div *ngIf="channelName===all-sources">
-    <div *ngFor="let news of newsObject.articles" style="display:flex; margin-top:20px; margin-bottom:40px;">
-        <div *ngIf="news!=all-sources">
+<div *ngIf="filterWord">
+    <div *ngFor="let news of newsObject.articles">
+        <div *ngIf="news.description.includes(filterWord)" style="display: flex; margin-top:20px; margin-bottom:40px;">
             <div>
                 <img src="{{news.urlToImage}}" style="width:150px; height:150px;">
             </div>
@@ -62,3 +62,4 @@
         </div>
     </div>
 </div>
+

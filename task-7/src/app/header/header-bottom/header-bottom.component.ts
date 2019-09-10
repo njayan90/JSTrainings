@@ -13,7 +13,7 @@ export class HeaderBottomComponent implements OnInit {
   channel:string[]=[];
   button:any;
   channelName:string='abc-news-au';
-  filterWord:string;
+  filterword:string="";
   constructor(private currentPage:CurrentPageService, private get:GetNewsService , private authService:AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -29,16 +29,17 @@ export class HeaderBottomComponent implements OnInit {
   }
   
   filter(filterWord:string){
-    this.get.filterWordEmitter.next(filterWord);
-    this.button=document.getElementById("filter");
-    this.button.value="";
-    
+      this.filterword=filterWord;
+      this.get.filterWordEmitter.next(filterWord);
+      this.button=document.getElementById("filter");
+      this.button.value="";
+      
   }
   setAdd(){
    this.currentPage.addEmitter.next(true);
     }
-
   clearFilter(){
     this.get.filterWordEmitter.next("");
+    this.filterword="";
   }
  }

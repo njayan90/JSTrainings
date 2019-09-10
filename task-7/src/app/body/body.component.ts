@@ -10,12 +10,14 @@ export class BodyComponent implements OnInit {
   
   add: boolean = false;
   details: boolean;
+  filterWord:string;
   constructor(private newsService: GetNewsService,
     private currentPage: CurrentPageService) { }
 
   ngOnInit() {
    this.currentPage.addEmitter.subscribe(addBoolean => this.add = addBoolean);
    this.currentPage.detailsEmitter.subscribe(details => this.details = details);
+   this.newsService.filterWordEmitter.subscribe(filter => this.filterWord = filter);
   }
  
  fullDetails(news: object) {

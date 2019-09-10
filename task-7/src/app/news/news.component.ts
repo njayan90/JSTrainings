@@ -9,20 +9,18 @@ import { CurrentPageService } from '../current-page.service';
 })
 export class NewsComponent implements OnInit {
   @Input() news:any;
+  @Input() filterWord:string;
   add:boolean;
   details:boolean;
-  filterWord:string;
   constructor(private newsService: GetNewsService,
     private currentPage: CurrentPageService) { }
 
   ngOnInit() {
    this.currentPage.addEmitter.subscribe(addBoolean => this.add = addBoolean);
-   this.newsService.filterWordEmitter.subscribe(filter => this.filterWord = filter);
    this.currentPage.detailsEmitter.subscribe(details => this.details = details);
   }
   fullDetails(news: object) {
     this.currentPage.detailsEmitter.next(true);
     this.newsService.setDetailedNews(news);
-   
   }
 }

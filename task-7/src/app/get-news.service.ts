@@ -17,7 +17,7 @@ export class GetNewsService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   getNews(channel: string) {
-    return this.http.get("https://newsapi.org/v1/articles?source=" + channel + "&apiKey=779a07ed2da04157ad44f5e2a99f384c");
+    return this.http.get("https://newsapi.org/v1/articles?source=" + channel + "&apiKey=abeed8e8d0574328bcaf7c46abe12d90");
   }
   getNewsObject() {
     for (let i = 0; i < this.channel.length; i++) {
@@ -44,7 +44,7 @@ export class GetNewsService {
 
   setChannelName(channel: string) {
     this.channelName = channel;
-  }
+   }
   getChannelName() {
     return this.channelName;
   }

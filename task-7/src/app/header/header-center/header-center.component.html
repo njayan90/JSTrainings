@@ -1,0 +1,6 @@
+<div class="header-center">
+<div *ngIf="auth.isAuthenticated(); else login">
+	<p>{{this.newsService.getChannelName()}}</p>
+</div>
+<ng-template #login><p>Login</p></ng-template>
+</div>

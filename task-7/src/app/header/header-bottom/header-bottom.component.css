@@ -1,0 +1,24 @@
+.header-bottom{
+	border-bottom: 1px solid black;
+	height:40px;
+	width:100%;
+}
+
+.news-list{
+	width:40%;
+	float:left;
+	padding-top:10px;
+	margin-left:10px;
+}
+
+.filter{
+	width:52%;
+	float:left;
+	padding-top:10px; 
+}
+
+.article{
+		width:7%;
+		float:right; 
+		padding-top:10px; 
+}

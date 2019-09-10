@@ -1,0 +1,6 @@
+<div class="header-top" >
+	<div *ngIf="this.auth.loggedIn" style="display: flex">
+	<p>Welcome {{auth.user}}</p>
+    <button class="logout" (click)="logout()" [routerLink]="'/'">Logout</button>
+</div>
+</div>

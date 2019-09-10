@@ -1,0 +1,14 @@
+
+.header-top{
+    border-bottom: 1px solid black; 
+    height:40px;
+    }
+    
+    .logout{
+        position: absolute;
+        top:0;
+        right:25px;
+        width: 70px;
+        height:25px;
+        margin-top:10px;
+    }

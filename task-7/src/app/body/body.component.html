@@ -1,0 +1,24 @@
+<div *ngIf="!add && !details">
+    <div *ngIf="newsService.getChannelName()!='all-sources' ; else allSources">
+        <div *ngFor='let news of this.newsService.getSourceNews().articles'>
+            <app-news [news]='news' [filterWord]='filterWord'></app-news>
+        </div>
+    </div>
+    <ng-template #allSources>
+        <div *ngFor="let newsSource of newsService.getSourceNews()">
+            <div *ngIf="newsSource">
+                <div *ngFor='let news of newsSource.articles'>
+                    <app-news [news]='news' [filterWord]='filterWord'></app-news>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>
+
+<div *ngIf="add && !details">
+    <app-add-article></app-add-article>
+</div>
+
+<div *ngIf="details">
+    <app-details><button (click)="returnMainPage()">Back</button></app-details>
+</div>

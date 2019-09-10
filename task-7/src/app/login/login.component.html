@@ -1,0 +1,15 @@
+<div *ngIf="login">
+<form #f="ngForm">
+    <div style="text-align: center; margin-top:200px;">
+    <label>Username</label><br>
+    <input type='text' id="username" class="form-control" name="username" ngModel><br>
+    <label>Password</label><br>
+    <input type='password' id="password" class="form-control" name="password" ngModel><br><br>
+    <button type="submit" (click)="onSubmit(f)" [routerLink]="'/news'">Sign In</button>
+    <div *ngIf="message">
+        <p>{{message}}</p>
+    </div>
+</div>
+</form>
+</div>
+<ng-content></ng-content>

@@ -17,7 +17,7 @@ export class GetNewsService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   getNews(channel: string) {
-    return this.http.get("https://newsapi.org/v1/articles?source=" + channel + "&apiKey=25af17a0640042deb77eb09249cda648");
+    return this.http.get("https://newsapi.org/v1/articles?source=" + channel + "&apiKey=779a07ed2da04157ad44f5e2a99f384c");
   }
   getNewsObject() {
     for (let i = 0; i < this.channel.length; i++) {

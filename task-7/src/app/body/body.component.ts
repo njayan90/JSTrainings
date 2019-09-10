@@ -21,7 +21,6 @@ export class BodyComponent implements OnInit {
  fullDetails(news: object) {
     this.currentPage.detailsEmitter.next(true);
     this.newsService.setDetailedNews(news);
-
   }
   returnMainPage(){
     this.currentPage.detailsEmitter.next(false);

@@ -16,12 +16,13 @@ export class NewsComponent implements OnInit {
     private currentPage: CurrentPageService) { }
 
   ngOnInit() {
-    this.currentPage.addEmitter.subscribe(addBoolean => this.add = addBoolean);
+   this.currentPage.addEmitter.subscribe(addBoolean => this.add = addBoolean);
    this.newsService.filterWordEmitter.subscribe(filter => this.filterWord = filter);
    this.currentPage.detailsEmitter.subscribe(details => this.details = details);
   }
   fullDetails(news: object) {
     this.currentPage.detailsEmitter.next(true);
     this.newsService.setDetailedNews(news);
+   
   }
 }
